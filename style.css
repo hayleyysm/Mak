@@ -1422,7 +1422,8 @@ body.music-page {
   }
 
   .loading-copy {
-    bottom: 18px;
+    bottom: max(92px, calc(env(safe-area-inset-bottom, 0px) + 86px));
+    width: min(300px, calc(100vw - 64px));
   }
 
   .home-screen {
