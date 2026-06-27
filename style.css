@@ -6,6 +6,13 @@
   --rose: #cf7db5;
   --scene-width: max(100vw, 177.78vh);
   --scene-height: max(100vh, 56.25vw);
+  --page-height: 100vh;
+}
+
+@supports (height: 100lvh) {
+  :root {
+    --page-height: 100lvh;
+  }
 }
 
 * {
@@ -34,7 +41,7 @@ img {
 .site-shell,
 .loading-screen,
 .home-screen {
-  min-height: 100vh;
+  min-height: var(--page-height);
 }
 
 .loading-screen {
@@ -201,7 +208,7 @@ img {
 .home-screen {
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: var(--page-height);
   background: #fff8f2 url("assets/images/Home%20Screen/Scene.png") center / cover no-repeat;
 }
 
@@ -659,7 +666,7 @@ img {
 
 body.simple-page {
   overflow: auto;
-  min-height: 100vh;
+  min-height: var(--page-height);
   background:
     radial-gradient(circle at 18% 22%, rgba(160, 82, 198, 0.18), transparent 28%),
     linear-gradient(180deg, #fff8ee, #f5dcff);
@@ -667,7 +674,7 @@ body.simple-page {
 
 .simple-page main {
   display: grid;
-  min-height: 100vh;
+  min-height: var(--page-height);
   place-items: center;
   padding: 32px;
   text-align: center;
@@ -691,7 +698,7 @@ body.simple-page {
 
 body.musings-page {
   overflow: hidden;
-  min-height: 100vh;
+  min-height: var(--page-height);
   background:
     radial-gradient(circle at 22% 16%, rgba(214, 132, 193, 0.26), transparent 26%),
     radial-gradient(circle at 82% 76%, rgba(140, 91, 214, 0.18), transparent 30%),
@@ -701,7 +708,7 @@ body.musings-page {
 .scrapbook-scene {
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: var(--page-height);
 }
 
 .musings-page .firefly-stage {
@@ -866,7 +873,7 @@ body.musings-page {
 
 body.music-page {
   overflow: auto;
-  min-height: 100vh;
+  min-height: var(--page-height);
   color: #fff2ff;
   background:
     radial-gradient(circle at 18% 12%, rgba(190, 85, 255, 0.34), transparent 30%),
@@ -890,7 +897,7 @@ body.music-page {
 
 .tunes-app {
   width: min(1480px, calc(100vw - 36px));
-  min-height: 100vh;
+  min-height: var(--page-height);
   margin: 0 auto;
   padding: 26px 0 34px;
 }
@@ -1445,8 +1452,8 @@ body.music-page {
   }
 
   .home-screen {
-    height: 100dvh;
-    min-height: 100dvh;
+    height: var(--page-height);
+    min-height: var(--page-height);
     background-image: url("assets/images/Home%20Screen/Mobile%20Home%20Screen.png");
     background-position: center bottom;
     background-size: cover;
