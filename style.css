@@ -1514,11 +1514,11 @@ body.music-page {
 
   .button-page-layer,
   .button-action-layer {
-    transform: translate(-10vw, 16vh) rotate(2deg) scale(1.08);
+    transform: translate(-10vw, 15.5vh) rotate(2deg) scale(1.15);
   }
 
   .letter-layer {
-    transform: translate(-17vw, 16vh) rotate(-3deg) scale(1.08);
+    transform: translate(-17.5vw, 15.5vh) rotate(-3deg) scale(1.15);
   }
 
   .letter-layer.is-visible {
@@ -1526,11 +1526,11 @@ body.music-page {
   }
 
   .music-button-layer {
-    transform: translate(-5vw, 17vh) rotate(2deg) scale(0.96);
+    transform: translate(-5vw, 16.5vh) rotate(2deg) scale(1.02);
   }
 
   .animation-button-layer {
-    transform: translate(-11vw, 32vh) rotate(2deg) scale(1.02);
+    transform: translate(-11vw, 32vh) rotate(2deg) scale(1.09);
   }
 
   .home-screen.button-page-is-front .button-page-layer,
@@ -1643,47 +1643,47 @@ body.music-page {
   @keyframes letter-pop-out-mobile {
     0% {
       opacity: 0;
-      transform: translate(-17vw, 23vh) rotate(-3deg) scale(0.88);
+      transform: translate(-17.5vw, 23vh) rotate(-3deg) scale(0.94);
     }
 
     72% {
       opacity: 1;
-      transform: translate(-17vw, 15vh) rotate(-3deg) scale(1.12);
+      transform: translate(-17.5vw, 14.5vh) rotate(-3deg) scale(1.19);
     }
 
     100% {
       opacity: 1;
-      transform: translate(-17vw, 16vh) rotate(-3deg) scale(1.08);
+      transform: translate(-17.5vw, 15.5vh) rotate(-3deg) scale(1.15);
     }
   }
 
   @keyframes button-page-lift-mobile {
     from {
-      transform: translate(-10vw, 16vh) rotate(2deg) scale(1.08);
+      transform: translate(-10vw, 15.5vh) rotate(2deg) scale(1.15);
     }
 
     to {
-      transform: translate(-12vw, 9vh) rotate(1deg) scale(1.16);
+      transform: translate(-12vw, 8.5vh) rotate(1deg) scale(1.23);
     }
   }
 
   @keyframes music-button-lift-mobile {
     from {
-      transform: translate(-5vw, 17vh) rotate(2deg) scale(0.96);
+      transform: translate(-5vw, 16.5vh) rotate(2deg) scale(1.02);
     }
 
     to {
-      transform: translate(-7vw, 10vh) rotate(1deg) scale(1.04);
+      transform: translate(-7vw, 9.5vh) rotate(1deg) scale(1.1);
     }
   }
 
   @keyframes animation-button-lift-mobile {
     from {
-      transform: translate(-11vw, 32vh) rotate(2deg) scale(1.02);
+      transform: translate(-11vw, 32vh) rotate(2deg) scale(1.09);
     }
 
     to {
-      transform: translate(-13vw, 25vh) rotate(1deg) scale(1.1);
+      transform: translate(-13vw, 24.5vh) rotate(1deg) scale(1.17);
     }
   }
 
