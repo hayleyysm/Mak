@@ -562,9 +562,10 @@ img {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition:
-    opacity 240ms ease,
-    visibility 240ms ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: none;
+  will-change: opacity, transform;
 }
 
 .button-page-layer {
