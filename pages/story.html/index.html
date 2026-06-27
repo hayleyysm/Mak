@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mak Musings</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="musings-page">
+  <main class="scrapbook-scene" aria-label="Mak Musings scrapbook">
+    <div class="firefly-stage musings-fireflies" aria-hidden="true">
+      <span class="firefly firefly-one"></span>
+      <span class="firefly firefly-two"></span>
+      <span class="firefly firefly-three"></span>
+      <span class="firefly firefly-four"></span>
+      <span class="firefly firefly-five"></span>
+      <span class="firefly firefly-six"></span>
+      <span class="firefly firefly-seven"></span>
+      <span class="firefly firefly-eight"></span>
+    </div>
+    <a class="scrapbook-back" href="../../index.html">Back</a>
+    <button class="scrapbook-page-button" type="button" aria-label="Close the scrapbook">
+      <img class="scrapbook-page" src="../../assets/images/Mak%20Musings/Scrapbook.png" alt="Open Mak Musings scrapbook">
+    </button>
+    <button class="scrapbook-cover-button" type="button" aria-label="Open the scrapbook">
+      <img class="scrapbook-cover" src="../../assets/images/Mak%20Musings/Scrapbook%20Cover.png" alt="Mak Musings scrapbook cover">
+    </button>
+  </main>
+
+  <script>
+    const scrapbookScene = document.querySelector(".scrapbook-scene");
+    const scrapbookCoverButton = document.querySelector(".scrapbook-cover-button");
+    const scrapbookPageButton = document.querySelector(".scrapbook-page-button");
+
+    scrapbookCoverButton?.addEventListener("click", () => {
+      scrapbookScene?.classList.add("is-open");
+      scrapbookCoverButton.disabled = true;
+      scrapbookPageButton.disabled = false;
+    });
+
+    scrapbookPageButton?.addEventListener("click", () => {
+      scrapbookScene?.classList.remove("is-open");
+      scrapbookCoverButton.disabled = false;
+      scrapbookPageButton.disabled = true;
+    });
+
+    if (scrapbookPageButton) {
+      scrapbookPageButton.disabled = true;
+    }
+  </script>
+</body>
+</html>

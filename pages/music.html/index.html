@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mak Tunes</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="music-page">
+  <main class="tunes-app">
+    <a class="tunes-back" href="../../index.html">Back</a>
+
+    <header class="tunes-header">
+      <div class="tunes-brand">
+        <img src="../../assets/images/Mak%20Tunes/Logo.jpg" alt="">
+        <span>mak tunes</span>
+      </div>
+      <p>purple vinyl at 2am</p>
+    </header>
+
+    <section class="tunes-layout" aria-label="Mak Tunes music player">
+      <aside class="playlist-panel" aria-label="Playlists">
+        <p class="panel-kicker">playlists</p>
+        <div class="playlist-list"></div>
+      </aside>
+
+      <section class="player-panel" aria-label="Now playing">
+        <div class="vinyl-stage" aria-hidden="true">
+          <div class="vinyl-disc">
+            <img class="now-cover" src="../../assets/images/Mak%20Tunes/Flow.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="now-card">
+          <p class="panel-kicker">now spinning</p>
+          <h1 class="now-playlist">Flow</h1>
+          <p class="now-track">Choose a track</p>
+
+          <div class="player-controls">
+            <button class="player-button previous-track" type="button" aria-label="Previous track">‹</button>
+            <button class="player-button play-track" type="button" aria-label="Play track">▶</button>
+            <button class="player-button next-track" type="button" aria-label="Next track">›</button>
+          </div>
+
+          <div class="seek-row">
+            <span class="current-time">0:00</span>
+            <input class="seek-slider" type="range" min="0" max="100" value="0" aria-label="Track progress">
+            <span class="duration-time">0:00</span>
+          </div>
+
+          <audio class="audio-player"></audio>
+        </div>
+      </section>
+
+      <section class="track-panel" aria-label="Tracks">
+        <p class="panel-kicker">queue</p>
+        <div class="track-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const playlists = [
+      {
+        title: "Flow",
+        image: "../../assets/images/Mak%20Tunes/Flow.jpg",
+        tracks: [
+          "Drake Pound Cake Paris Morton Music 2 (feat. Jay Z).m4a",
+          "Drake Know Yourself.m4a",
+          "Drake Fancy (feat. T.I. & Swizz Beats).m4a",
+          "J. Cole Neighbors.m4a",
+          "Drake Shabang.m4a",
+          "Kanye West Can't Tell Me Nothing.m4a",
+          "Kanye West Ultralight Beam.m4a",
+          "Kendrick Lamar Poetic Justice (feat. Drake).m4a",
+          "Mac Miller So It Goes.m4a",
+          "Sonder Too Fast.m4a",
+          "Montell Jordan This Is How We Do It.m4a",
+          "Mark Morrison Return of the Mack.m4a",
+          "Mac Miller Weekend (feat. Miguel).m4a"
+        ]
+      },
+      {
+        title: "When We're In Lurve",
+        image: "../../assets/images/Mak%20Tunes/When%20We're%20in%20Lurve.jpg",
+        tracks: [
+          "Stevie Wonder My Cherie Amour.m4a",
+          "Rihanna Loveeeeeee Song (feat. Future).m4a",
+          "Monica Angel of Mine.m4a",
+          "Masego & FKJ Tadow.m4a",
+          "Mariah Carey Always Be My Baby.m4a",
+          "Mac Miller Dunno.m4a",
+          "Mac Miller Cinderella (feat. Ty Dolla $ign).m4a",
+          "Louis Armstrong La Vie en Rose.m4a",
+          "Faith Evans Love Like This.m4a",
+          "Drake Unforgettable (feat. Young Jeezy).m4a",
+          "Drake Fancy (feat. T.I. & Swizz Beats).m4a",
+          "Drake Can I.m4a",
+          "Drake Best I Ever Had.m4a",
+          "Chris Brown With You.m4a",
+          "Arctic Monkeys 505.m4a"
+        ]
+      },
+      {
+        title: "Songs You Sent Me",
+        image: "../../assets/images/Mak%20Tunes/Songs%20You%20Sent%20Me.jpg",
+        tracks: [
+          "The Notorious B.I.G. Sky's the Limit (feat. 112).m4a",
+          "Stevie Wonder My Cherie Amour.m4a",
+          "Masego & FKJ Tadow.m4a",
+          "Louis Armstrong La Vie en Rose.m4a",
+          "Kina Get You the Moon (feat. Snow).m4a",
+          "H.E.R. Best Part (feat. Daniel Caesar).m4a",
+          "Drake & GIVEON Chicago Freestyle.m4a"
+        ]
+      },
+      {
+        title: "Mac You Put Me On",
+        image: "../../assets/images/Mak%20Tunes/Mac%20You%20Put%20Me%20On.jpg",
+        tracks: [
+          "Mac Miller Hurt Feelings.m4a",
+          "Mac Miller Good News.m4a",
+          "Mac Miller Dunno.m4a",
+          "Mac Miller Cinderella (feat. Ty Dolla $ign).m4a",
+          "Mac Miller 2009.m4a",
+          "Mac Miller ROS.m4a",
+          "Mac Miller Once A Day.m4a",
+          "Mac Miller Self Care.m4a",
+          "Mac Miller So It Goes.m4a",
+          "Mac Miller Weekend (feat. Miguel).m4a"
+        ]
+      },
+      {
+        title: "Drakeh",
+        image: "../../assets/images/Mak%20Tunes/Drakeh.jpg",
+        tracks: [
+          "Yung Bleu You're Mines Still (feat. Drake).m4a",
+          "Kendrick Lamar Poetic Justice (feat. Drake).m4a",
+          "Drake Unforgettable (feat. Young Jeezy).m4a",
+          "Drake Trust Issues.m4a",
+          "Drake Teenage Fever.m4a",
+          "Drake Shot For Me.m4a",
+          "Drake Pound Cake Paris Morton Music 2 (feat. Jay Z).m4a",
+          "Drake Passionfruit.m4a",
+          "Drake Marvins Room.m4a",
+          "Drake Jungle.m4a",
+          "Drake From Time (feat. Jhene Aiko).m4a",
+          "Drake Finesse.m4a",
+          "Drake Doing It Wrong.m4a",
+          "Drake Come Thru.m4a",
+          "Drake Can I.m4a",
+          "Drake Best I Ever Had.m4a",
+          "Drake Bahamas Promises.m4a",
+          "Drake & GIVEON Chicago Freestyle.m4a"
+        ]
+      },
+      {
+        title: "When You're Mad at Me",
+        image: "../../assets/images/Mak%20Tunes/When%20You're%20Mad%20at%20Me.jpg",
+        tracks: [
+          "Yung Bleu You're Mines Still (feat. Drake).m4a",
+          "Mac Miller Self Care.m4a",
+          "Mac Miller Hurt Feelings.m4a",
+          "Kanye West Heartless.m4a",
+          "H.E.R. Could've Been (feat. Bryson Tiller).m4a",
+          "Future WAIT FOR U (feat. Drake & Tems).m4a",
+          "Drake Trust Issues.m4a",
+          "Drake Know Yourself.m4a",
+          "Drake Janice STFU.m4a",
+          "Drake Doing It Wrong.m4a",
+          "Drake Bahamas Promises.m4a",
+          "Brent Faiyaz Jackie Brown.m4a",
+          "Beyonce Me, Myself and I.m4a"
+        ]
+      },
+      {
+        title: "When I'm Mad at You",
+        image: "../../assets/images/Mak%20Tunes/When%20I'm%20Mad%20at%20You.jpg",
+        tracks: [
+          "Brandy & Monica The Boy Is Mine.m4a",
+          "Beyonce Hold Up.m4a",
+          "Drake Jungle.m4a",
+          "Jhene Aiko  B.S. (feat. H.E.R.).m4a",
+          "Jhene Aiko Pray For You.m4a",
+          "Jhene Aiko Triggered Freestyle.m4a",
+          "Sonder & Jorja Smith Nobody But You.m4a",
+          "Kanye West Heartless.m4a"
+        ]
+      },
+      {
+        title: "Angel Baby",
+        image: "../../assets/images/Mak%20Tunes/Angel%20Baby.jpg",
+        tracks: [
+          "Liv Harland Dancing in the Sky.m4a"
+        ]
+      }
+    ];
+
+    const playlistList = document.querySelector(".playlist-list");
+    const trackList = document.querySelector(".track-list");
+    const audio = document.querySelector(".audio-player");
+    const nowCover = document.querySelector(".now-cover");
+    const nowPlaylist = document.querySelector(".now-playlist");
+    const nowTrack = document.querySelector(".now-track");
+    const playButton = document.querySelector(".play-track");
+    const previousButton = document.querySelector(".previous-track");
+    const nextButton = document.querySelector(".next-track");
+    const seekSlider = document.querySelector(".seek-slider");
+    const currentTime = document.querySelector(".current-time");
+    const durationTime = document.querySelector(".duration-time");
+    const vinylDisc = document.querySelector(".vinyl-disc");
+
+    let activePlaylistIndex = 0;
+    let activeTrackIndex = 0;
+
+    const trackName = (fileName) => fileName.replace(/\.m4a$/i, "");
+    const trackSrc = (playlist, fileName) => `../../assets/audio/${playlist.title}/${fileName}`;
+    const formatTime = (seconds) => {
+      if (!Number.isFinite(seconds)) {
+        return "0:00";
+      }
+
+      const minutes = Math.floor(seconds / 60);
+      const remaining = Math.floor(seconds % 60).toString().padStart(2, "0");
+      return `${minutes}:${remaining}`;
+    };
+
+    const renderPlaylists = () => {
+      playlistList.innerHTML = "";
+
+      playlists.forEach((playlist, index) => {
+        const button = document.createElement("button");
+        button.className = `playlist-card${index === activePlaylistIndex ? " is-active" : ""}`;
+        button.type = "button";
+        button.innerHTML = `
+          <img src="${playlist.image}" alt="">
+          <span>
+            <strong>${playlist.title}</strong>
+            <small>${playlist.tracks.length} tracks</small>
+          </span>
+        `;
+        button.addEventListener("click", () => {
+          selectPlaylist(index);
+        });
+        playlistList.append(button);
+      });
+    };
+
+    const renderTracks = () => {
+      const playlist = playlists[activePlaylistIndex];
+      trackList.innerHTML = "";
+
+      playlist.tracks.forEach((track, index) => {
+        const button = document.createElement("button");
+        button.className = `track-row${index === activeTrackIndex ? " is-active" : ""}`;
+        button.type = "button";
+        button.innerHTML = `
+          <span>${String(index + 1).padStart(2, "0")}</span>
+          <strong>${trackName(track)}</strong>
+        `;
+        button.addEventListener("click", () => {
+          playTrack(index);
+        });
+        trackList.append(button);
+      });
+    };
+
+    const loadTrack = () => {
+      const playlist = playlists[activePlaylistIndex];
+      const track = playlist.tracks[activeTrackIndex];
+
+      nowCover.src = playlist.image;
+      nowPlaylist.textContent = playlist.title;
+      nowTrack.textContent = trackName(track);
+      audio.src = trackSrc(playlist, track);
+      seekSlider.value = 0;
+      currentTime.textContent = "0:00";
+      durationTime.textContent = "0:00";
+      document.querySelectorAll(".track-row").forEach((row, index) => {
+        row.classList.toggle("is-active", index === activeTrackIndex);
+      });
+    };
+
+    const selectPlaylist = (index) => {
+      activePlaylistIndex = index;
+      activeTrackIndex = 0;
+      renderPlaylists();
+      renderTracks();
+      loadTrack();
+    };
+
+    const playTrack = async (index = activeTrackIndex) => {
+      activeTrackIndex = index;
+      loadTrack();
+
+      try {
+        await audio.play();
+      } catch {
+        vinylDisc.classList.remove("is-playing");
+        playButton.textContent = "▶";
+      }
+    };
+
+    playButton.addEventListener("click", async () => {
+      if (!audio.src) {
+        loadTrack();
+      }
+
+      if (audio.paused) {
+        try {
+          await audio.play();
+        } catch {
+          return;
+        }
+      } else {
+        audio.pause();
+      }
+    });
+
+    previousButton.addEventListener("click", () => {
+      activeTrackIndex = (activeTrackIndex - 1 + playlists[activePlaylistIndex].tracks.length) % playlists[activePlaylistIndex].tracks.length;
+      playTrack(activeTrackIndex);
+    });
+
+    nextButton.addEventListener("click", () => {
+      activeTrackIndex = (activeTrackIndex + 1) % playlists[activePlaylistIndex].tracks.length;
+      playTrack(activeTrackIndex);
+    });
+
+    seekSlider.addEventListener("input", () => {
+      if (Number.isFinite(audio.duration)) {
+        audio.currentTime = (Number(seekSlider.value) / 100) * audio.duration;
+      }
+    });
+
+    audio.addEventListener("play", () => {
+      vinylDisc.classList.add("is-playing");
+      playButton.textContent = "Ⅱ";
+    });
+
+    audio.addEventListener("pause", () => {
+      vinylDisc.classList.remove("is-playing");
+      playButton.textContent = "▶";
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      durationTime.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      currentTime.textContent = formatTime(audio.currentTime);
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        seekSlider.value = (audio.currentTime / audio.duration) * 100;
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      nextButton.click();
+    });
+
+    renderPlaylists();
+    renderTracks();
+    loadTrack();
+  </script>
+</body>
+</html>

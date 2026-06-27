@@ -1,0 +1,8 @@
+.agents/
+.chrome-profile/
+.edge-profile/
+.verify-profile*/
+Mak/
+
+.DS_Store
+Thumbs.db
