@@ -6,6 +6,8 @@ const envelopeImage = document.querySelector(".envelope-layer");
 const envelopeButton = document.querySelector(".envelope-button");
 const buttonPageImage = document.querySelector(".button-page-layer");
 const letterImage = document.querySelector(".letter-layer");
+const letterHitbox = document.querySelector(".letter-hitbox");
+const buttonPageHitbox = document.querySelector(".button-page-hitbox");
 const buttonPageLinks = document.querySelectorAll(".button-page-link");
 const openMailbox = new Image();
 openMailbox.src = "assets/images/Home%20Screen/Mailbox%20Open.png";
@@ -111,7 +113,7 @@ envelopeButton?.addEventListener("click", () => {
   envelopeButton.disabled = true;
 });
 
-letterImage?.addEventListener("pointerdown", (event) => {
+letterHitbox?.addEventListener("pointerdown", (event) => {
   if (!letterImage.classList.contains("is-visible")) {
     return;
   }
@@ -120,7 +122,7 @@ letterImage?.addEventListener("pointerdown", (event) => {
   letterSwipeStartY = event.clientY;
 });
 
-letterImage?.addEventListener("pointerup", (event) => {
+letterHitbox?.addEventListener("pointerup", (event) => {
   if (!letterImage.classList.contains("is-visible")) {
     return;
   }
@@ -133,7 +135,7 @@ letterImage?.addEventListener("pointerup", (event) => {
   }
 });
 
-buttonPageImage?.addEventListener("pointerdown", (event) => {
+buttonPageHitbox?.addEventListener("pointerdown", (event) => {
   if (!buttonPageImage.classList.contains("is-visible")) {
     return;
   }
@@ -142,7 +144,7 @@ buttonPageImage?.addEventListener("pointerdown", (event) => {
   buttonPageSwipeStartY = event.clientY;
 });
 
-buttonPageImage?.addEventListener("pointerup", (event) => {
+buttonPageHitbox?.addEventListener("pointerup", (event) => {
   if (!buttonPageImage.classList.contains("is-visible")) {
     return;
   }

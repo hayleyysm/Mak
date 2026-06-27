@@ -603,7 +603,7 @@ img {
   opacity: 1;
   visibility: visible;
   cursor: grab;
-  pointer-events: auto;
+  pointer-events: none;
   touch-action: pan-x pan-y pinch-zoom;
   animation: none;
 }
@@ -614,14 +614,17 @@ img {
 
 .home-screen.button-page-is-front .button-page-layer {
   z-index: 9;
-  cursor: grab;
-  pointer-events: auto;
+  pointer-events: none;
   touch-action: pan-x pan-y pinch-zoom;
   animation: button-page-lift 420ms cubic-bezier(0.18, 0.88, 0.24, 1) forwards;
 }
 
 .home-screen.papers-are-open .mailbox-button {
-  z-index: 12;
+  z-index: 13;
+  left: 56%;
+  top: 59%;
+  width: min(180px, 12vw);
+  aspect-ratio: 1 / 1;
 }
 
 .home-screen.button-page-is-front .button-page-layer:active {
@@ -643,7 +646,7 @@ img {
 
 .button-page-link {
   position: absolute;
-  z-index: 11;
+  z-index: 14;
   display: block;
   width: min(238px, 14.7vw);
   height: min(58px, 4.1vw);
@@ -653,6 +656,28 @@ img {
 }
 
 .home-screen.button-page-is-front .button-page-link {
+  pointer-events: auto;
+}
+
+.paper-hitbox {
+  position: absolute;
+  left: 34%;
+  top: 68%;
+  z-index: 12;
+  width: min(560px, 34vw);
+  height: min(700px, 62vh);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.home-screen.papers-are-open:not(.button-page-is-front) .letter-hitbox,
+.home-screen.papers-are-open.button-page-is-front .button-page-hitbox {
+  cursor: grab;
   pointer-events: auto;
 }
 
@@ -1481,6 +1506,12 @@ body.music-page {
     width: min(360px, 62vw);
   }
 
+  .home-screen.papers-are-open .mailbox-button {
+    left: 62%;
+    top: 51%;
+    width: min(116px, 24vw);
+  }
+
   .home-screen::after {
     left: 59%;
     bottom: 2.8%;
@@ -1566,6 +1597,13 @@ body.music-page {
     top: 72%;
     width: min(260px, 58vw);
     height: 110px;
+  }
+
+  .paper-hitbox {
+    left: 34%;
+    top: 64%;
+    width: min(315px, 70vw);
+    height: min(380px, 58vh);
   }
 
   .tunes-app {
