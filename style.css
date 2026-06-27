@@ -512,6 +512,34 @@ img {
   transform: translate(-50%, -50%);
 }
 
+.mailbox-button,
+.envelope-button,
+.paper-hitbox,
+.button-page-link,
+.scrapbook-page-button,
+.scrapbook-cover-button {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  outline: none;
+  user-select: none;
+}
+
+.mailbox-button:focus,
+.mailbox-button:focus-visible,
+.envelope-button:focus,
+.envelope-button:focus-visible,
+.paper-hitbox:focus,
+.paper-hitbox:focus-visible,
+.button-page-link:focus,
+.button-page-link:focus-visible,
+.scrapbook-page-button:focus,
+.scrapbook-page-button:focus-visible,
+.scrapbook-cover-button:focus,
+.scrapbook-cover-button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 .envelope-layer {
   position: absolute;
   inset: 0;
