@@ -7,6 +7,18 @@
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="musings-page">
+  <script>
+    const setPageHeight = () => {
+      document.documentElement.style.setProperty("--page-height", `${window.innerHeight}px`);
+    };
+
+    setPageHeight();
+    window.addEventListener("resize", setPageHeight);
+    window.addEventListener("orientationchange", () => {
+      window.setTimeout(setPageHeight, 250);
+    });
+  </script>
+
   <main class="scrapbook-scene" aria-label="Mak Musings scrapbook">
     <div class="firefly-stage musings-fireflies" aria-hidden="true">
       <span class="firefly firefly-one"></span>

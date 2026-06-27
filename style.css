@@ -9,12 +9,6 @@
   --page-height: 100vh;
 }
 
-@supports (height: 100lvh) {
-  :root {
-    --page-height: 100lvh;
-  }
-}
-
 * {
   box-sizing: border-box;
 }

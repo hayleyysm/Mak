@@ -25,6 +25,10 @@ let buttonPageSwipeStartY = 0;
 const pageSwitchThreshold = 45;
 let buttonPageReadyAt = 0;
 
+const setPageHeight = () => {
+  document.documentElement.style.setProperty("--page-height", `${window.innerHeight}px`);
+};
+
 const showButtonPage = () => {
   homeScreen?.classList.add("button-page-is-front");
   buttonPageReadyAt = window.performance.now() + 260;
@@ -35,7 +39,11 @@ const showLetterPage = () => {
   buttonPageReadyAt = 0;
 };
 
+setPageHeight();
+
 document.addEventListener("DOMContentLoaded", () => {
+  setPageHeight();
+
   window.setTimeout(() => {
     loadingScreen?.classList.add("is-lifting");
   }, 250);
@@ -44,6 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
     loadingScreen?.classList.add("is-complete");
     document.body.style.overflow = "auto";
   }, 6150);
+});
+
+window.addEventListener("resize", setPageHeight);
+window.addEventListener("orientationchange", () => {
+  window.setTimeout(setPageHeight, 250);
 });
 
 mailboxButton?.addEventListener("click", () => {
