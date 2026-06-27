@@ -220,6 +220,24 @@ img {
   pointer-events: none;
 }
 
+.home-screen::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1%;
+  z-index: 4;
+  width: min(320px, 22vw);
+  height: 72px;
+  border-radius: 50% 50% 32% 32%;
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(67, 38, 28, 0.24), transparent 62%),
+    radial-gradient(ellipse at 42% 70%, rgba(79, 36, 92, 0.24), transparent 58%),
+    linear-gradient(180deg, transparent 0%, rgba(65, 47, 29, 0.34) 72%, rgba(37, 25, 21, 0.18) 100%);
+  filter: blur(6px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
 .cloud-stage {
   position: absolute;
   inset: 0;
@@ -1427,7 +1445,8 @@ body.music-page {
   }
 
   .home-screen {
-    min-height: 100svh;
+    height: 100dvh;
+    min-height: 100dvh;
     background-image: url("assets/images/Home%20Screen/Mobile%20Home%20Screen.png");
     background-position: center bottom;
     background-size: cover;
@@ -1459,6 +1478,21 @@ body.music-page {
     background:
       radial-gradient(ellipse at center, rgba(62, 34, 24, 0.3) 0%, rgba(62, 34, 24, 0.18) 42%, transparent 72%);
     filter: blur(10px);
+  }
+
+  .home-screen::before {
+    left: 59%;
+    bottom: -0.5%;
+    width: min(250px, 58vw);
+    height: max(72px, 10vh);
+    border-radius: 48% 48% 28% 28%;
+    opacity: 0.86;
+    background:
+      radial-gradient(ellipse at 52% 18%, rgba(255, 239, 205, 0.28), transparent 40%),
+      radial-gradient(ellipse at 50% 42%, rgba(55, 30, 24, 0.34), transparent 60%),
+      radial-gradient(ellipse at 38% 70%, rgba(74, 25, 98, 0.28), transparent 62%),
+      linear-gradient(180deg, transparent 0%, rgba(55, 42, 25, 0.42) 76%, rgba(30, 21, 18, 0.22) 100%);
+    filter: blur(7px);
   }
 
   .envelope-layer {
