@@ -451,7 +451,8 @@ img {
 .mail-note-text {
   overflow: hidden;
   width: 0;
-  margin: 0 auto;
+  margin: 0 -0.34em;
+  padding: 0 0.34em;
   white-space: nowrap;
   animation: mail-type 2500ms steps(19, end) 450ms forwards;
 }
@@ -1322,7 +1323,7 @@ body.music-page {
 
 @keyframes mail-type {
   to {
-    width: 15.5ch;
+    width: 16.9ch;
   }
 }
 
@@ -1483,17 +1484,17 @@ body.music-page {
 
   .home-screen::before {
     left: 59%;
-    bottom: -0.5%;
-    width: min(250px, 58vw);
-    height: max(72px, 10vh);
+    bottom: -0.8%;
+    width: min(292px, 66vw);
+    height: max(88px, 12vh);
     border-radius: 48% 48% 28% 28%;
-    opacity: 0.86;
+    opacity: 0.98;
     background:
-      radial-gradient(ellipse at 52% 18%, rgba(255, 239, 205, 0.28), transparent 40%),
-      radial-gradient(ellipse at 50% 42%, rgba(55, 30, 24, 0.34), transparent 60%),
-      radial-gradient(ellipse at 38% 70%, rgba(74, 25, 98, 0.28), transparent 62%),
-      linear-gradient(180deg, transparent 0%, rgba(55, 42, 25, 0.42) 76%, rgba(30, 21, 18, 0.22) 100%);
-    filter: blur(7px);
+      radial-gradient(ellipse at 52% 16%, rgba(255, 230, 188, 0.26), transparent 38%),
+      radial-gradient(ellipse at 50% 38%, rgba(48, 24, 18, 0.52), transparent 61%),
+      radial-gradient(ellipse at 38% 70%, rgba(67, 19, 92, 0.46), transparent 64%),
+      linear-gradient(180deg, transparent 0%, rgba(46, 32, 20, 0.6) 72%, rgba(25, 18, 16, 0.34) 100%);
+    filter: blur(8px);
   }
 
   .envelope-layer {
