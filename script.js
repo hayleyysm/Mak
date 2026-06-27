@@ -39,6 +39,28 @@ const showLetterPage = () => {
   buttonPageReadyAt = 0;
 };
 
+const resetMailbox = () => {
+  if (mailboxImage) {
+    mailboxImage.src = "assets/images/Home%20Screen/Mailbox%20Closed.png";
+    mailboxImage.classList.remove("is-open");
+  }
+
+  if (envelopeImage) {
+    envelopeImage.src = "assets/images/Home%20Screen/Closed%20Envelope.png";
+    envelopeImage.classList.remove("is-visible", "is-open");
+  }
+
+  buttonPageImage?.classList.remove("is-visible");
+  letterImage?.classList.remove("is-visible");
+  homeScreen?.classList.remove("mailbox-is-open", "papers-are-open", "button-page-is-front");
+  mailboxButton?.setAttribute("aria-label", "Open the mailbox");
+  envelopeButton?.setAttribute("aria-label", "Open the envelope");
+  if (envelopeButton) {
+    envelopeButton.disabled = false;
+  }
+  buttonPageReadyAt = 0;
+};
+
 setPageHeight();
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -64,12 +86,16 @@ mailboxButton?.addEventListener("click", () => {
     return;
   }
 
+  if (homeScreen?.classList.contains("papers-are-open")) {
+    resetMailbox();
+    return;
+  }
+
   mailboxImage.src = "assets/images/Home%20Screen/Mailbox%20Open.png";
   mailboxImage.classList.add("is-open");
   envelopeImage?.classList.add("is-visible");
   homeScreen?.classList.add("mailbox-is-open");
   mailboxButton.setAttribute("aria-label", "Mailbox open");
-  mailboxButton.disabled = true;
 });
 
 envelopeButton?.addEventListener("click", () => {
@@ -80,6 +106,7 @@ envelopeButton?.addEventListener("click", () => {
 
   buttonPageImage?.classList.add("is-visible");
   letterImage?.classList.add("is-visible");
+  homeScreen?.classList.add("papers-are-open");
   envelopeButton.setAttribute("aria-label", "Envelope open");
   envelopeButton.disabled = true;
 });
